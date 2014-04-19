@@ -1,11 +1,6 @@
-<h1 style="display: none;" xmlns="http://www.w3.org/1999/html"><?php echo $heading_title; ?></h1>
 <!--
-<div style="width:100%;height:1006px;background:url('image/data/welcome.jpg') no-repeat center;">
-    <div style="margin:0 auto">
-    <a href="index.php" style="position:relative;display:block; width:110px; height:105px;left:730px;top:305px"></a>
-    </div>
-</div>
--->
+<h1 style="display: none;" xmlns="http://www.w3.org/1999/html"><?php echo $heading_title; ?></h1>
+
 <style>
     body {
         display: block;
@@ -26,3 +21,19 @@
     </div>
 </div>
 <div style="width:100%;height:245px;background:url('image/data/5.jpg') no-repeat center;"></div>
+
+-->
+
+<?php echo $header;?>
+
+<div class="guide" >
+
+    <div class="guide-blank"></div>
+    <div class="guide-btn-group">
+        <a href="index.php?route=static/static/home" class="home-button" ></a>
+        <a href="index.php?route=account/register" class="register-button" ></a>
+    </div>
+
+</div>
+
+<?php echo $footer;?>

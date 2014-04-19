@@ -84,4 +84,22 @@ class ControllerStaticStatic extends Controller {
 
     }
 
+    public function process1(){
+
+        if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/static/process1.tpl')) {
+            $this->template = $this->config->get('config_template') . '/template/static/process1.tpl';
+        } else {
+            $this->template = 'default/template/static/process1.tpl';
+        }
+
+        $this->children = array(
+
+            'common/footer',
+            'common/header'
+
+        );
+
+        $this->response->setOutput($this->render());
+
+    }
 }

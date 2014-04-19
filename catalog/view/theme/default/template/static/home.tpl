@@ -16,7 +16,7 @@
 
                 </div>
                 <div class="type-user">
-                    <a href="index.php?route=static/static/print_type">学生用户 >></a>
+                    <a href="index.php?route=static/static/process1">学生用户 >></a>
                 </div>
                 <div class="type-name">
                     学生用品打印
@@ -24,7 +24,7 @@
             </li>
             <li>
                 <div class="type-logo"></div>
-                <div class="type-user"><a href="index.php?route=static/static/print_type">普通用户 >></a></div>
+                <div class="type-user"><a href="index.php?route=static/static/process1">普通用户 >></a></div>
                 <div class="type-name">普通用户打印</div>
             </li>
         </ul>
@@ -37,12 +37,12 @@
                 <div class="type-logo">
 
                 </div>
-                <div class="type-user"><a href="index.php?route=static/static/print_type">专业用户 >></a></div>
+                <div class="type-user"><a href="index.php?route=static/static/process1">专业用户 >></a></div>
                 <div class="type-name">艺术品打印</div>
             </li>
             <li>
                 <div class="type-logo"></div>
-                <div class="type-user"><a href="index.php?route=static/static/print_type">工业用户 >></a></div>
+                <div class="type-user"><a href="index.php?route=static/static/process1">工业用户 >></a></div>
                 <div class="type-name">工业品打印</div>
             </li>
         </ul>
