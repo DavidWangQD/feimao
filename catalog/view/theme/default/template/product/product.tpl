@@ -5,18 +5,19 @@
     <?php echo $breadcrumb['separator']; ?><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a>
     <?php } ?>
   </div>
-  <h1><?php echo $heading_title; ?></h1>
+  <?php if ($thumb) { ?>
+  <div class="image nothreedmode" style="text-align: center;border:1px solid #eee;margin-bottom: 5px;padding-top:13px;width:100%;height:400px;">
+      <a href="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>" class="colorbox">
+          <img class="display_image" height='375px' src="<?php echo $thumb; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" id="image" />
+      </a>
+  </div>
+  <div class="image threedmode" style="display:none;text-align: center;border:1px solid #eee;margin-bottom: 5px;padding-top:13px;width:100%;height:400px;" isloaded='false'>
+      <canvas id="cv" style="border: 1px solid;width:500px;height:375px;" onclick="showthreedimage();" ></canvas>
+  </div>
+  <?php } ?>
   <div class="product-info">
   <div class="left">
     <?php if($thumb || $images) { ?>
-      <?php if ($thumb) { ?>
-      <div class="image nothreedmode">
-          <a href="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>" class="colorbox"><img src="<?php echo $thumb; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" id="image" /></a>
-      </div>
-      <div class="image threedmode" style="display:none;" isloaded='false'>
-          <canvas id="cv" style="border: 1px solid;" width="228" height="228" onclick="showthreedimage();" ></canvas>
-      </div>
-      <?php } ?>
       <?php if ($images || $threed_object) { ?>
       <div class="image-additional">
 
@@ -26,7 +27,7 @@
 
         <?php if ($images) { ?>
           <?php foreach ($images as $image) { ?>
-            <a onclick="shownothreedimage();" href="<?php echo $image['popup']; ?>" title="<?php echo $heading_title; ?>" class="colorbox"><img src="<?php echo $image['thumb']; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a>
+            <a class='thumb_image' onclick="shownothreedimage();" popupurl="<?php echo $image['popup']; ?>" title="<?php echo $heading_title; ?>"><img src="<?php echo $image['thumb']; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a>
           <?php } ?>
         <?php } ?>
 
@@ -40,6 +41,7 @@
   </div>
     <div class="right">
       <div class="description">
+        <span>名 称：</span> <?php echo $heading_title; ?><br />
         <?php if ($manufacturer) { ?>
         <span><?php echo $text_manufacturer; ?></span> <a href="<?php echo $manufacturers; ?>"><?php echo $manufacturer; ?></a><br />
         <?php } ?>
@@ -48,7 +50,7 @@
         <span><?php echo $text_reward; ?></span> <?php echo $reward; ?><br />
         <?php } ?>-->
         <span><?php echo $text_stock; ?></span> <?php echo $stock; ?><br /><br />
-        <img src="catalog/view/theme/default/image/stars-<?php echo $rating; ?>.png" alt="<?php echo $reviews; ?>" />
+        <!--<img src="catalog/view/theme/default/image/stars-<?php echo $rating; ?>.png" alt="<?php echo $reviews; ?>" />-->
       </div>
       <?php if ($price) { ?>
       <div class="price" <?php if(!$product_type) echo "style='display:none;'"; ?>><?php echo $text_price; ?>
@@ -93,8 +95,8 @@
       <?php endif; ?>
       <?php if($product_type == '0') { ?>
       <div class="options">
-          <h2>选项</h2>
-          <br />
+          <!--<h2>选项</h2>
+          <br />-->
           <b>材质:</b>&nbsp;&nbsp;
           <select name='material' style="width:120px;">
               <?php foreach($material as $key => $item) { ?>
@@ -158,7 +160,7 @@
     <a href="#tab-review"><?php echo $tab_review; ?></a>
     <?php } ?>
     <?php if ($products) { ?>
-    <a href="#tab-related"><?php echo $tab_related; ?> (<?php echo count($products); ?>)</a>
+    <!--<a href="#tab-related"><?php echo $tab_related; ?> (<?php echo count($products); ?>)</a>-->
     <?php } ?>
   </div>
     <div style="height:0; line-height:0; width:100%; overflow: hidden; clear:both"></div>
@@ -219,7 +221,7 @@
   </div>
   <?php } ?>
   <?php if ($products) { ?>
-  <div id="tab-related" class="tab-content">
+  <div id="tab-related" class="tab-content" style="display:none;">
     <div class="box-product">
       <?php foreach ($products as $product) { ?>
       <div>
@@ -405,6 +407,14 @@ $('#button-review').bind('click', function() {
 //--></script> 
 <script type="text/javascript"><!--
 $('#tabs a').tabs();
+
+    $(function(){
+        $(".thumb_image").click(function(){
+           var url = $(this).attr('popupurl');
+            $(".display_image").attr('src',url);
+        });
+    });
+
 //--></script> 
 <script type="text/javascript" src="catalog/view/javascript/jquery/ui/jquery-ui-timepicker-addon.js"></script> 
 <script type="text/javascript"><!--
@@ -474,8 +484,46 @@ $(document).ready(function() {
         $("#image").trigger("click");
 
     }*/
-
-
 </script>
 <?php } ?>
+    <div class="item fm-contents">
+        <div class="item-head">
+            <h3 class="item-title fl">产品展示图</h3>
+            <a class="more fr" href="#">
+                查看更多
+            </a>
+        </div>
+        <ul class="product-ul">
+            <li>
+                <a href="index.php?route=product/product&path=20&product_id=30">
+                    <img src="/catalog/view/theme/default/image/feimao/product_item.png" />
+                </a>
+            </li>
+            <li>
+                <a href="index.php?route=product/product&path=20&product_id=47">
+                    <img src="/catalog/view/theme/default/image/feimao/product_item.png" />
+                </a>
+            </li>
+            <li>
+                <a href="index.php?route=product/product&path=20&product_id=28">
+                    <img src="/catalog/view/theme/default/image/feimao/product_item.png" />
+                </a>
+            </li>
+            <li>
+                <a href="index.php?route=product/product&path=20&product_id=48">
+                    <img src="/catalog/view/theme/default/image/feimao/product_item.png" />
+                </a>
+            </li>
+            <li>
+                <a href="index.php?route=product/product&path=20&product_id=43">
+                    <img src="/catalog/view/theme/default/image/feimao/product_item.png" />
+                </a>
+            </li>
+            <li>
+                <a href="index.php?route=product/product&path=20&product_id=49">
+                    <img src="/catalog/view/theme/default/image/feimao/product_item.png" />
+                </a>
+            </li>
+        </ul>
+    </div>
 <?php echo $footer; ?>
