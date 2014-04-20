@@ -28,9 +28,18 @@ class ControllerCommonHeader extends Controller {
 		$this->data['google_analytics'] = html_entity_decode($this->config->get('config_google_analytics'), ENT_QUOTES, 'UTF-8');
 		$this->data['name'] = $this->config->get('config_name');
 
-		$this->data['homepage'] = HTTP_SERVER;
+//		$this->data['homepage'] = HTTP_SERVER;
+		$this->data['homepage'] = $this->url->link('static/static/home');;
 		$this->data['model'] = $this->url->link('product/category', 'model', 'SSL');
 		$this->data['printer'] = $this->url->link('product/category', 'printer', 'SSL');
+        if($_SERVER["REQUEST_URI"]=='/'||$_SERVER["REQUEST_URI"]=='/index.php?route=common/home')
+        {
+            $this->data['headershow']=false;
+        }
+        else
+        {
+            $this->data['headershow']=true;
+        }
 
 		if ($this->config->get('config_icon') && file_exists(DIR_IMAGE . $this->config->get('config_icon'))) {
 			$this->data['icon'] = $server . 'image/' . $this->config->get('config_icon');
@@ -56,6 +65,7 @@ class ControllerCommonHeader extends Controller {
 		$this->data['text_checkout'] = $this->language->get('text_checkout');
 
 		$this->data['home'] = $this->url->link('common/home');
+//		$this->data['home'] = $this->url->link('static/static/home');
 		$this->data['wishlist'] = $this->url->link('account/wishlist', '', 'SSL');
 		$this->data['logged'] = $this->customer->isLogged();
 		$this->data['account'] = $this->url->link('account/account', '', 'SSL');

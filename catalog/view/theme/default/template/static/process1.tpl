@@ -10,7 +10,7 @@
             <div class="title fl">
                 第一步 : 模型制作
             </div>
-            <div class="last-step fr"><< 上一步</div>
+            <div class="last-step fr" style="display: none"><< 上一步</div>
 
         </div>
 

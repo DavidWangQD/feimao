@@ -58,7 +58,9 @@ class ControllerCheckoutSuccess extends Controller {
 
 		$this->data['button_continue'] = $this->language->get('button_continue');
 
-		$this->data['continue'] = $this->url->link('common/home');
+//		$this->data['continue'] = $this->url->link('common/home');
+//		$this->data['continue'] = $this->url->link('static/static/home');
+		$this->data['continue'] = $this->url->link('static/static/process1');
 
 		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/common/success.tpl')) {
 			$this->template = $this->config->get('config_template') . '/template/common/success.tpl';

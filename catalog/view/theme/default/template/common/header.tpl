@@ -51,7 +51,7 @@ $('body').prepend('<iframe src="<?php echo $store; ?>" style="display: none;"></
 </head>
 <body>
 <!--头部——开始-->
-<div class="header ie6fixedTL">
+<div class="header ie6fixedTL" <?php if($headershow==false) echo "style='display:none'";?>>
     <div class="header_top clearfix">
         <ul class="top_menul jvf_fl clearfix">
             <li class="header_top_mubg left_mu5">
@@ -151,7 +151,7 @@ $('body').prepend('<iframe src="<?php echo $store; ?>" style="display: none;"></
 <?php } ?>
     -->
 </div>
-<div class="banner-height"></div>
+<div class="banner-height" <?php if($headershow==false) echo "style='display:none'";?>></div>
 <?php if ($error) { ?>
 <div class="warning">
     <?php echo $error ?>
