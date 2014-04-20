@@ -265,6 +265,20 @@ class ControllerProductCategory extends Controller {
 
 			$results = $this->model_catalog_product->getProducts($data);
 
+            if(isset($this->request->get['model'])) {
+                $extensionNum = '0';
+            }elseif(isset($this->request->get['printer'])) {
+                $extensionNum = '1';
+            }else{
+                $extensionNum = $this->model_catalog_category->topTypeByCategoryId($category_id);
+            }
+
+            if($extensionNum == 0) {
+                $extension = 'model';
+            }else{
+                $extension = 'printer';
+            }
+
 			foreach ($results as $result) {
 				if ($result['image']) {
 					$image = $this->model_tool_image->resize($result['image'], $this->config->get('config_image_product_width'), $this->config->get('config_image_product_height'));
@@ -306,7 +320,7 @@ class ControllerProductCategory extends Controller {
 					'tax'         => $tax,
 					'rating'      => $result['rating'],
 					'reviews'     => sprintf($this->language->get('text_reviews'), (int)$result['reviews']),
-					'href'        => $this->url->link('product/product', 'path=' . $this->request->get['path'] . '&product_id=' . $result['product_id'] . $url)
+					'href'        => $this->url->link('product/product', 'path=' . $this->request->get['path'] . '&product_id=' . $result['product_id']. $url .'&' . $extension)
 				);
 			}
 
