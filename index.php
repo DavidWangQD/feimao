@@ -2,7 +2,7 @@
 // Version
 define('VERSION', '1.5.6.1');
 
-/* Testing non-betaa */
+/* Testing non-beta */
 
 // Configuration
 if (file_exists('config.php')) {
