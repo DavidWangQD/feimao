@@ -81,6 +81,9 @@ label {
 #content {
 	min-height: 400px;
 	margin-bottom: 25px;
+    max-width: 1270px;
+    margin-left:auto;
+    margin-right:auto;
 }
 #column-left + #column-right + #content, #column-left + #content {
 	margin-left: 195px;
@@ -398,6 +401,7 @@ label {
 	color: #FFFFFF;
 }
 .breadcrumb {
+    display: none;
 	color: #CCCCCC;
 	margin-bottom: 10px;
 }
